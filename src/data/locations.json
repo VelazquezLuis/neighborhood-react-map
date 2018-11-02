@@ -6,7 +6,8 @@
     "state": "Nevada",
     "zip": "89109",
     "url": "caesars.com",
-    "pos": {"lat":36.1161669,"lng":-115.1953174} 
+    "pos": {"lat":36.116156, "lng":-115.174500},
+    "id": "1"
   },
   {
     "name": "MGM Grand",
@@ -15,7 +16,8 @@
     "state": "Nevada",
     "zip": "89109",
     "url": " mgmgrand.com",
-    "pos": {"lat":36.1025758,"lng":-115.1950192} 
+    "pos": {"lat":36.102581, "lng":-115.170254},
+    "id": "2"
   },
   {
     "name": "Mandalay Bay",
@@ -24,7 +26,8 @@
     "state": "Nevada",
     "zip": "89119",
     "url": "mandalaybay.com",
-    "pos": {"lat":36.0923909,"lng":-115.2052922} 
+    "pos": {"lat":36.091879, "lng":-115.175244},
+    "id": "3"
   },
   {
     "name": "Circus Circus Hotel & Resort ",
@@ -33,7 +36,8 @@
     "state": "Nevada",
     "zip": "89109",
     "url": "circuscircus.com",
-    "pos": {"lat":36.1411929,"lng":-115.1898427 } 
+    "pos": {"lat":36.137773,"lng":-115.165370},
+    "id": "4"
   },
   {
     "name": "Luxor Hotel & Casino",
@@ -42,34 +46,8 @@
     "state": "Nevada",
     "zip": "89119",
     "url": "luxor.com",
-    "pos": {"lat":36.1029498,"lng":-115.2019351} 
-  },
-  {
-    "name": "Hooters Casino Hotel",
-    "street": "115 E Tropicana Ave",
-    "city": "Las Vegas",
-    "state": "Nevada",
-    "zip": "89109",
-    "url": "hooterscasinohotel.com",
-    "pos": {"lat":36.1008694,"lng":-115.2012484} 
-  },
-  {
-    "name": "ARIA Resort & Casino",
-    "street": "3730 S Las Vegas Blvd",
-    "city": "Las Vegas",
-    "state": "Nevada",
-    "zip": "89158",
-    "url": "aria.com",
-    "pos": {"lat":36.1070682,"lng":-115.1953965} 
-  },
-  {
-    "name": "The Pleasure Pit",
-    "street": "Planet Hollywood Casino",
-    "city": "Las Vegas",
-    "state": "Nevada",
-    "zip": "89119",
-    "url": "caesars.com",
-    "pos": {"lat":36.1088312,"lng":-115.1874485} 
+    "pos": {"lat":36.095718,"lng":-115.176094},
+    "id": "5"
   },
   {
     "name": "Excalibur Hotel & Casino ",
@@ -78,24 +56,7 @@
     "state": "Nevada",
     "zip": "89109",
     "url": "excalibur.com",
-    "pos": {"lat":36.0965721,"lng":-115.1875699} 
-  },
-  {
-    "name": "The Venetian",
-    "street": "3355 S Las Vegas Blvd",
-    "city": "Las Vegas",
-    "state": "Nevada",
-    "zip": "89109",
-    "url": "venetian.com",
-    "pos": {"lat":36.1216767,"lng":-115.185385} 
-  },
-  {
-    "name": "Gold Coast Hotel & Casino",
-    "street": "4000 W Flamingo Rd",
-    "city": "Las Vegas",
-    "state": "Nevada",
-    "zip": "89103",
-    "url": "goldcoastcasino.com",
-    "pos": {"lat":36.1174604,"lng":-115.2151238} 
+    "pos": {"lat":36.098985, "lng":-115.175470},
+    "id": "6"
   }
 ]
