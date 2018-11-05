@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Map, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
+import ErrMapPg from './ErrMapPg'
 
 const api_Key = "AIzaSyAM4l2gAoyd3OxMlqhkICZ_IfFoQ1E-Uds";
 const FS_ClientID = "B0D51LUW45PRFAARUI45YOJAT0YLNUDP4C3UF0U4QUWGYKUG";
@@ -21,6 +22,34 @@ class MapShowcase extends Component {
 
 
   componentDidMount = () => {
+
+  }
+
+  //
+  componentWillReceiveProps= (props) => {
+    this.setState({firstDrop: false});
+
+    //update markers
+    if (this.state.markers.length !== props.locations.length) {
+      this.closeInfoWindow();
+      this.updateMarkers(props.locations);
+      this.setState({activeMarker: null});
+      return;
+    }
+
+    //close window of any non selected markers 
+    if (!props.selectedIndex || (this.state.activeMarker && 
+      (this.state.markers[props.selectedIndex] !== this.state.activeMarker))) {
+        this.closeInfoWindow();
+      }
+
+    //check for a selected index
+    if (props.selectedIndex === null || typeof(props.selectedIndex) === "undefined"){
+      return;
+    };
+
+    ///index clicked
+    this.onMarkerClick(this.state.markerProps[props.selectedIndex],this.state.markers[props.selectedIndex]);
 
   }
 
@@ -101,7 +130,7 @@ class MapShowcase extends Component {
     let markers = locations.map((location, index) => {
       let mProps = { // change name to temp maeker props
         key:index,
-        index,
+        index: index,
         name: location.name,
         position: location.pos,
         url: location.url
@@ -172,4 +201,4 @@ class MapShowcase extends Component {
     )
   }
 }
-export default GoogleApiWrapper({apiKey: api_Key})(MapShowcase)
+export default GoogleApiWrapper({apiKey: api_Key, LoadingContainer: ErrMapPg})(MapShowcase)
