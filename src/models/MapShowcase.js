@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {Map, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
 
 const api_Key = "AIzaSyAM4l2gAoyd3OxMlqhkICZ_IfFoQ1E-Uds";
+const FS_ClientID = "B0D51LUW45PRFAARUI45YOJAT0YLNUDP4C3UF0U4QUWGYKUG";
+const FS_ClientSecret ="AF2AI52TZKPLI1F2LNFBPSXUALLXAI3JXSLBXGVP4SZMA2ML";
+const FS_Version = "20181104"
 
 class MapShowcase extends Component {
   //holds map object
@@ -14,6 +17,7 @@ class MapShowcase extends Component {
     showingInfoWindow: false
 
   };
+
 
 
   componentDidMount = () => {
@@ -30,19 +34,61 @@ class MapShowcase extends Component {
   //close markers animation
   closeInfoWindow = () => {
     this.state.activeMarker && this
-      .state
-      .activeMarker
-      .setAnimation(null);
+      .state.activeMarker.setAnimation(null);
     this.setState({showingInfoWindow: false, activeMarker: null, activeMarkerProps: null});    
   }
+  // gets data from 4 square 
+  getBusinessInfo = (props, data) => {
+    return data.response.venues.filter(item => item.name.includes(props.name) || props.name.includes(item.name));
+  }
+
+
 
   //closes all info windows 
   onMarkerClick = (props, marker, e) => {
     this.closeInfoWindow();
 
-    this.setState({showingInfoWindow:true ,activeMarker:marker, activeMarkerProps: props});
-  }
+    //get FS data
+    let url=  `https://api.foursquare.com/v2/venues/search?client_id=${FS_ClientID}&client_secret=${FS_ClientSecret}&v=${FS_Version}&radius=100&ll=${props.position.lat},${props.position.lng}&llAcc=100`;
+    let headers = new Headers();
+    let request = new Request(url, {
+      method: 'GET',
+      headers
+    });
 
+    //Create props for the active marker
+    let activeMarkerProps;
+    fetch(request)
+    .then(response => response.json())
+    .then(result => {
+      // fecthes  the name from FS
+      let restaurant =  this.getBusinessInfo(props, result);
+      activeMarkerProps = { 
+        ...props,
+        foursquare: restaurant[0]
+      };
+
+      //
+      if (activeMarkerProps.foursquare) {
+        let url = `https://api.foursquare.com/v2/venues/${restaurant[0].id}/photos?client_id=${FS_ClientID}&client_secret=${FS_ClientSecret}&v=${FS_Version}`;
+        fetch(url)
+        .then(response => response.json())
+        .then(result => {
+          activeMarkerProps = {
+        ...activeMarkerProps,
+        images: result.response.photos
+        };
+        if (this.state.activeMarker)
+          this.state.activeMarker.setAnimation(null);
+        marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
+        this.setState({showingInfoWindow: true,activeMarker: marker, activeMarkerProps});
+        })
+      } else {
+        marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
+        this.setState({showingInfoWindow:true ,activeMarker:marker, activeMarkerProps: props});
+      }   
+    })
+  }
   //handles location markers after filtering
   updateMarkers = (locations) => {
     if(!locations)
@@ -105,10 +151,23 @@ class MapShowcase extends Component {
           onClose={this.closeInfoWindow}>
           <div>
             <h3>{amProps &&  amProps.name} </h3>
-            {amProps && amProps.url ? (<a href={amProps.url}>See Website</a> )
-            : ""}
+            {amProps && amProps.url 
+              ? ( 
+                <a href={amProps.url}>See Website</a> 
+              )
+              : ""}
+            {amProps && amProps.images 
+              ? ( 
+                <div><img
+                  alt={amProps.name + "casino picture"}
+                  src={amProps.images.items[0].prefix + "100x100" + amProps.images.items[0].suffix}/>
+                  <p>image form foursquare</p>
+                </div>
+              )
+              : ""
+            }
           </div>
-          </InfoWindow>
+        </InfoWindow>
       </Map>
     )
   }
