@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   background-color: #001f3f;
@@ -34,108 +35,36 @@
   font-family: "Times New Roman", Times, serif;
   font-size: 3vw;
   margin: 15px;
-  padding: 0px;
-  background-color: #0074D9;
+  padding: 0px;  
   color: #DDDDDD;
-}
-
-.container {
-  background-image: url("./images/LasVegas.jpg");
 }
 
 .sideBar {
   position: absolute;
-  background: #AAAAAA;
-  height: 100%vw;
-  overflow-y: scroll;
-  max-width: 100%;
-  width: 300px;
-  box-shadow: 0px 1px 1px grey;
-  z-index:100;
-}
-.header {
-  margin-Top:"0px";
-}
-
-.list {
-  width: 250px;
-  padding: 0px 15px 0px;
-}
-
-.filterText {
-  width: 100%;
-  margin: 35px 0px 30px;
-  padding: 5px;
-  border: 3px solid navy;
-}
-.unCasinoList {
-  list-style-type: none;
-  padding: 10px
-}
-.listItem {
-  margin-bottom: 15px;
-  border: 3px solid navy;
-}
-.listLink {
-  background: transparent;
-  border: 1px;
-  color: #282c34;
-}
-.App {
-  text-align: center;
-  background-color: #001f3f;
-}
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.headertitle {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 3vw;
-  margin: 15px;
-  padding: 0px;
-  background-color: #0074D9;
-  color: #DDDDDD;
-}
-
-.container {
-  background-image: url("./images/LasVegas.jpg");
-}
-
-.sideBar {
-  position: absolute;
-  background: #AAAAAA;
+  
   height: 100%;
   overflow-y: scroll;
   max-width: 100%;
   width: 24vw;
   box-shadow: 0px 1px 1px grey;
   z-index:100;
+  
 }
+
+.sideBar:after {
+  content : "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("./images/dice.jpg");
+  width: 100%;
+  height: 1600px;
+  opacity : 0.5;
+  z-index: -1;
+}
+
+
 .header {
   margin-Top:"0px";
 }
@@ -164,8 +93,8 @@
 .listLink {
   background: transparent;
   border: 1px;
-  color: #282c34;
-  font-size: 2vmin  ;
+  color: white;
+  font-size: 100%;
 }
 
 
