@@ -3,8 +3,8 @@ import {Map, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
 import ErrMapPg from './ErrMapPg'
 
 const api_Key = "AIzaSyAM4l2gAoyd3OxMlqhkICZ_IfFoQ1E-Uds";
-const FS_ClientID = "TGS0TTEIKBI2MRBHE3USYOAAG50A3VB4NKLMGGEYN0PAYBNQ";
-const FS_ClientSecret ="UAOE5VPTYEUFXTIUSHKRB5MI4RE1BHSVF1XOE4Y352ZEF1RL";
+const FS_ClientID = "WGNISZ34TNH3XGJ1VOXUVFGWO350IIDOUWUETVFBQCB5EBFD";
+const FS_ClientSecret ="TAMJVP2CZJVTWYBRUC20DNQAHIVOAY4BFJFWJO4I2THJ4E35";
 const FS_Version = "20181107"
 
 class MapShowcase extends Component {
