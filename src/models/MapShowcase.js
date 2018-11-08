@@ -176,7 +176,7 @@ class MapShowcase extends Component {
             <h3>{amProps &&  amProps.name} </h3>
             {amProps && amProps.url
               ? (
-                <a href={"http://"+ amProps.url} target="_blank">See Website</a>
+                <a href={"http://"+ amProps.url}>See Website</a>
               )
               : ""}
             {amProps && amProps.images
