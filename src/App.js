@@ -12,42 +12,42 @@ class App extends Component {
     all: locations, // change all to somthing similliar 
     filtered: null,
     open: false
-
   }
-  componentDidMount = () => {
+  
+  componentDidMount () {
     this.setState({
       ...this.state,
-      filtered: this.filterLocations(this.state.all, "")
+      filtered: this.locationFilter(this.state.all, "")
     });
-  }  
+  }
 
   //refresh the query string
-  updateQuery = (query) => {
+  updateQuery =(query) => {
     this.setState({
       ...this.state,
       selectedIndex: null,
-      filtered: this.filterLocations(this.state.all,query)
+      filtered: this.locationFilter(this.state.all,query)
     });
   }
 
   //mateches query
-  filterLocations = (locations, query) => {
+  locationFilter = (locations, query) => {
     return locations.filter(location => location.name.toLowerCase().includes(query.toLowerCase()));
   }
 
   //make the location match the state
-  clickListItem = (index) => {
+  itemClick = (index) => {
     this.setState({ selectedIndex: index, open: !this.state.open})
   }
 
-  //renders google map into the browser 
-  render = () => {
+  //renders google map into the browser
+  render () {
     return (
       <section className="App">
-        <section>                    
-          <h1>
+        <section>
+          <h1 className="headertitle">
               Vegas Casinos & Hotels
-          </h1>          
+          </h1>
         </section>
         <MapShowcase
           lat={this.state.lat}
@@ -55,12 +55,12 @@ class App extends Component {
           zoom={this.state.zoom}
           locations={this.state.filtered}
           selectedIndex={this.state.selectedIndex}
-          clickListItem={this.clickListItem}
+          itemClick={this.itemClick}
           />
-        <ListDD 
+        <ListDD
           locations={this.state.filtered}
-          filterLocations= {this.updateQuery}
-          clickListItem={this.clickListItem}/>
+          locationFilter= {this.updateQuery}
+          itemClick={this.itemClick}/>
       </section>
     );
   }

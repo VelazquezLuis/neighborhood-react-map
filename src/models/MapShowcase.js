@@ -3,9 +3,9 @@ import {Map, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
 import ErrMapPg from './ErrMapPg'
 
 const api_Key = "AIzaSyAM4l2gAoyd3OxMlqhkICZ_IfFoQ1E-Uds";
-const FS_ClientID = "B0D51LUW45PRFAARUI45YOJAT0YLNUDP4C3UF0U4QUWGYKUG";
-const FS_ClientSecret ="AF2AI52TZKPLI1F2LNFBPSXUALLXAI3JXSLBXGVP4SZMA2ML";
-const FS_Version = "20181104"
+const FS_ClientID = "TGS0TTEIKBI2MRBHE3USYOAAG50A3VB4NKLMGGEYN0PAYBNQ";
+const FS_ClientSecret ="UAOE5VPTYEUFXTIUSHKRB5MI4RE1BHSVF1XOE4Y352ZEF1RL";
+const FS_Version = "20181107"
 
 class MapShowcase extends Component {
   //holds map object
@@ -16,17 +16,14 @@ class MapShowcase extends Component {
     activeMarker: null,
     activeMarkerProps: null,
     showingInfoWindow: false
-
   };
 
-
-
-  componentDidMount = () => {
+  componentDidMount ()  {
 
   }
 
   //
-  componentWillReceiveProps= (props) => {
+  componentWillReceiveProps = (props) => {
     this.setState({firstDrop: false});
 
     //update markers
@@ -37,14 +34,14 @@ class MapShowcase extends Component {
       return;
     }
 
-    //close window of any non selected markers 
-    if (!props.selectedIndex || (this.state.activeMarker && 
-      (this.state.markers[props.selectedIndex] !== this.state.activeMarker))) {
-        this.closeInfoWindow();
-      }
+    //close window of any non selected markers
+    if (!props.selectedIndex || (this.state.activeMarker &&
+    (this.state.markers[props.selectedIndex] !== this.state.activeMarker))) {
+      this.closeInfoWindow();
+    }
 
     //check for a selected index
-    if (props.selectedIndex === null || typeof(props.selectedIndex) === "undefined"){
+    if (props.selectedIndex === null || typeof(props.selectedIndex) === "undefined") {
       return;
     };
 
@@ -53,26 +50,23 @@ class MapShowcase extends Component {
 
   }
 
-  //once map has loaded this will execute and pass the map object 
+  //once map has loaded this will execute and pass the map object
   mapReady = (props,map) => {
-    //savethe map refrence in state and prepare the location  markers 
+    //savethe map refrence in state and prepare the location  markers
     this.setState({map});
     this.updateMarkers(this.props.locations);
   }
 
   //close markers animation
   closeInfoWindow = () => {
-    this.state.activeMarker && this
-      .state.activeMarker.setAnimation(null);
-    this.setState({showingInfoWindow: false, activeMarker: null, activeMarkerProps: null});    
+    this.state.activeMarker && this.state.activeMarker.setAnimation(null);
+    this.setState({showingInfoWindow: false, activeMarker: null, activeMarkerProps: null});
   }
-  // gets data from 4 square 
+  // gets data from 4 square
   getBusinessInfo = (props, data) => {
     return data.response.venues.filter(item => item.name.includes(props.name) || props.name.includes(item.name));
   }
-
-
-
+  
   //closes all info windows 
   onMarkerClick = (props, marker, e) => {
     this.closeInfoWindow();
@@ -92,10 +86,10 @@ class MapShowcase extends Component {
     .then(result => {
       // fecthes  the name from FS
       let restaurant =  this.getBusinessInfo(props, result);
-      activeMarkerProps = { 
+      activeMarkerProps = {
         ...props,
         foursquare: restaurant[0]
-      };
+    };
 
       //
       if (activeMarkerProps.foursquare) {
@@ -115,7 +109,7 @@ class MapShowcase extends Component {
       } else {
         marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
         this.setState({showingInfoWindow:true ,activeMarker:marker, activeMarkerProps: props});
-      }   
+      }
     })
   }
   //handles location markers after filtering
@@ -130,7 +124,7 @@ class MapShowcase extends Component {
     let markers = locations.map((location, index) => {
       let mProps = { // change name to temp maeker props
         key:index,
-        index: index,
+        index:index,
         name: location.name,
         position: location.pos,
         url: location.url
@@ -153,7 +147,7 @@ class MapShowcase extends Component {
 
   // rednders the mab object
   render = () => {
-    //style and center can be teaked later 
+    //style and center can be teaked later
     const style = {
       width: '100%',
       height: '100%'
@@ -178,24 +172,24 @@ class MapShowcase extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
           onClose={this.closeInfoWindow}>
-          <div>
+          <section>
             <h3>{amProps &&  amProps.name} </h3>
-            {amProps && amProps.url 
-              ? ( 
-                <a href={amProps.url}>See Website</a> 
+            {amProps && amProps.url
+              ? (
+                <a href={"http://"+ amProps.url} target="_blank">See Website</a>
               )
               : ""}
-            {amProps && amProps.images 
-              ? ( 
-                <div><img
+            {amProps && amProps.images
+              ? (
+                <section><img
                   alt={amProps.name + "casino picture"}
                   src={amProps.images.items[0].prefix + "100x100" + amProps.images.items[0].suffix}/>
                   <p>image form foursquare</p>
-                </div>
+                </section>
               )
               : ""
             }
-          </div>
+          </section>
         </InfoWindow>
       </Map>
     )

@@ -11,7 +11,7 @@ class ErrMapPg extends Component {
     this.setState({timeout});
   }
 
-  componentWillMount = () => {
+  componentWillUnmount = () => {
     window.clearTimeout(this.state.timeout);
   }
 
@@ -21,16 +21,16 @@ class ErrMapPg extends Component {
 
   render = () => {
     return (
-      <div>
+      <section>
         {this.state.show
           ? (
-            <div>
+            <section>
               <h1>Error loading page</h1>
               <p> could not load map due to a network error. try agian later</p>
-            </div>
+            </section>
           )
-          : (<div><h1>loading</h1></div> )  
-        } </div>
+          : (<section><h1>loading</h1></section> )  
+        } </section>
     )
   }
 }
