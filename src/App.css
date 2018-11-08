@@ -81,3 +81,137 @@
   border: 1px;
   color: #282c34;
 }
+.App {
+  text-align: center;
+  background-color: #001f3f;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.headertitle {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 3vw;
+  margin: 15px;
+  padding: 0px;
+  background-color: #0074D9;
+  color: #DDDDDD;
+}
+
+.container {
+  background-image: url("./images/LasVegas.jpg");
+}
+
+.sideBar {
+  position: absolute;
+  background: #AAAAAA;
+  height: 100%;
+  overflow-y: scroll;
+  max-width: 100%;
+  width: 24vw;
+  box-shadow: 0px 1px 1px grey;
+  z-index:100;
+}
+.header {
+  margin-Top:"0px";
+}
+
+.list {
+  width: 20vw;
+  padding: 0px 15px 0px;
+}
+
+.filterText {
+  width: 100%;
+  height: 30px;
+  margin: 35px 0px 30px;
+  padding: 5px;
+  border: 3px solid navy;
+}
+.unCasinoList {
+  list-style-type: none;
+  padding: 10px
+}
+.listItem {
+  margin-bottom: 15px;
+  border: 3px solid navy;
+  height: 40px;
+}
+.listLink {
+  background: transparent;
+  border: 1px;
+  color: #282c34;
+  font-size: 2vmin  ;
+}
+
+
+
+@media (max-width: 800px) {
+  .headertitle {
+    font-size: 9vw;
+  }
+  .filterText {
+    height: 15px;
+    width: 25vw;
+    margin-left: 7px;
+    padding-left: 5px;
+  }
+  .sideBar {
+    width: 30vw;
+  }
+  .listItem{
+    width: 25vw;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+  .list {
+    padding-left: 0px;
+  }
+  .listLink {
+    
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 450px) {
+  .listLink {
+    
+    font-size: 13px;
+    margin-left: 0px;
+    padding-left: 1px;
+  }
+  .filterText {
+    height: 15px;
+    width: 22vw;
+    margin-left: 5px;
+    padding-left: 5px;
+  }
+  .listItem{
+    height: 55px;
+  }
+  
+}
