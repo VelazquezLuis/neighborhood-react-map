@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Map, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
-import ErrMapPg from './ErrMapPg'
 
 const api_Key = "AIzaSyAM4l2gAoyd3OxMlqhkICZ_IfFoQ1E-Uds";
 const FS_ClientID = "3I1W1BDIM1IXGXRZ4VJTABHNFZ1ZAKSWBCFEKHXBQ0THH1VC";
@@ -196,4 +195,4 @@ class MapShowcase extends Component {
     )
   }
 }
-export default GoogleApiWrapper({apiKey: api_Key, LoadingContainer: ErrMapPg})(MapShowcase)
+export default GoogleApiWrapper({apiKey: api_Key })(MapShowcase)
