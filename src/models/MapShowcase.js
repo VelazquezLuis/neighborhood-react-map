@@ -3,9 +3,9 @@ import {Map, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
 import ErrMapPg from './ErrMapPg'
 
 const api_Key = "AIzaSyAM4l2gAoyd3OxMlqhkICZ_IfFoQ1E-Uds";
-const FS_ClientID = "WGNISZ34TNH3XGJ1VOXUVFGWO350IIDOUWUETVFBQCB5EBFD";
-const FS_ClientSecret ="TAMJVP2CZJVTWYBRUC20DNQAHIVOAY4BFJFWJO4I2THJ4E35";
-const FS_Version = "20181107"
+const FS_ClientID = "3I1W1BDIM1IXGXRZ4VJTABHNFZ1ZAKSWBCFEKHXBQ0THH1VC";
+const FS_ClientSecret ="2ZUKK5CRH5TCR55DHKTYHUXH51PXJLHZH1HKSRLL45GPYBQO";
+const FS_Version = "20181108"
 
 class MapShowcase extends Component {
   //holds map object
@@ -46,7 +46,8 @@ class MapShowcase extends Component {
     };
 
     ///index clicked
-    this.onMarkerClick(this.state.markerProps[props.selectedIndex],this.state.markers[props.selectedIndex]);
+    this.onMarkerClick(this.state.markerProps[props.selectedIndex],
+    this.state.markers[props.selectedIndex]);
 
   }
 
@@ -89,7 +90,7 @@ class MapShowcase extends Component {
       activeMarkerProps = {
         ...props,
         foursquare: restaurant[0]
-    };
+      };
 
       //
       if (activeMarkerProps.foursquare) {
@@ -173,7 +174,7 @@ class MapShowcase extends Component {
           visible={this.state.showingInfoWindow}
           onClose={this.closeInfoWindow}>
           <section>
-            <h3>{amProps &&  amProps.name} </h3>
+            <h3> {amProps &&  amProps.name} </h3>
             {amProps && amProps.url
               ? (
                 <a href={"http://"+ amProps.url}>See Website</a>
