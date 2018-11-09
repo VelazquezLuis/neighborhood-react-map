@@ -14,11 +14,17 @@ class App extends Component {
     open: false
   }
   
-  componentDidMount () {
+  componentDidMount () {    
     this.setState({
       ...this.state,
       filtered: this.locationFilter(this.state.all, "")
     });
+
+    setTimeout(function(){ if(window.google) {
+      console.log("maps work"); 
+    } else { alert
+      ("Error loading page could not load map due to a network error. try agian later" );
+    } }, 3000);
   }
 
   //refresh the query string
@@ -44,23 +50,24 @@ class App extends Component {
   render () {
     return (
       <section className="App">
-        <section>
+        <header>
           <h1 className="headertitle">
               Vegas Casinos & Hotels
           </h1>
-        </section>
-        <MapShowcase
+        </header>
+        <ListDD
+          locations={this.state.filtered}
+          locationFilter= {this.updateQuery}
+          itemClick={this.itemClick}
+          tabIndex={0}/>          
+        <MapShowcase          
           lat={this.state.lat}
           lng={this.state.lng}
           zoom={this.state.zoom}
           locations={this.state.filtered}
           selectedIndex={this.state.selectedIndex}
           itemClick={this.itemClick}
-          />
-        <ListDD
-          locations={this.state.filtered}
-          locationFilter= {this.updateQuery}
-          itemClick={this.itemClick}/>
+          tabIndex={-1}/>        
       </section>
     );
   }
