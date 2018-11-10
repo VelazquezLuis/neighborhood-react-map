@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Map, GoogleApiWrapper, InfoWindow} from 'google-maps-react';
 
 const api_Key = "AIzaSyAM4l2gAoyd3OxMlqhkICZ_IfFoQ1E-Uds";
-const FS_ClientID = "3I1W1BDIM1IXGXRZ4VJTABHNFZ1ZAKSWBCFEKHXBQ0THH1VC";
-const FS_ClientSecret ="2ZUKK5CRH5TCR55DHKTYHUXH51PXJLHZH1HKSRLL45GPYBQO";
+const FS_ClientID = "EUMERDYAWLLQJIM1LJ3QFOV00GLHVO3YMBPVNNJK0MI0MKKC";
+const FS_ClientSecret ="YU1GSDYKDZI0XSYN5PZDKJ4XKSGMFIJJUXPMOXLN4DKIGZFF";
 const FS_Version = "20181108"
 
 class MapShowcase extends Component {
