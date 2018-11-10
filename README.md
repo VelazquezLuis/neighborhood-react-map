@@ -6,7 +6,14 @@ This is a react Application using Foursquare And Google apis. it focuses on find
 ## Instructions
 To run this application, install npm on your local machine via NodeJS. Clone the project to your machine here. Begin the installation with the command npm install in your command line after navigating to the correct directory in your local files. To start the development server use the command npm start. The application will run in your browser at the address http://localhost:3000/.
 **Note the standard create react app service worker has been enabled. It is available when runnuing a production build, and wont be available in testing.
+to use service worker, To use Service Worker use the command npm run build to enter production mode.
 
+Builds the app for production to the build folder.
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.
+
+Your app is ready to be deployed.
 ## Dependencies
 This app is built using Create-React-App. Dependencies include Google Maps API, Foursquare API, Bootstrap, pixelbay, and Fontawesome.
 
